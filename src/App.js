@@ -1,31 +1,33 @@
 /* eslint-disable */
 import "./App.css";
 import { Container, Nav, Navbar, Carousel } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Data from "./data.js";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import DetailPage from "./detail";
+import Detail from "./detail";
 import axios from "axios";
-import data from "./data.js";
+import Cart from "./Cart";
 
 function App() {
   let [shoes, setShoes] = useState(Data);
-
   let [nums, SetNums] = useState(1);
-
+  let [재고] = useState([10, 11, 12]);
   let navigate = useNavigate();
 
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark" className="back">
         <Container>
-          <Navbar.Brand href="/"> 👟 Store</Navbar.Brand>
+          <Navbar.Brand href="/"> SHOE STORE </Navbar.Brand>
           <Nav className="me-auto">
-            <Link to="/" className="Link-to-home">
-              Home
+            <Link to="/" className="Link-to-home Link-space">
+              <span className="material-icons">home</span>
             </Link>
-            <Link to="detail" className="Link-to-detail">
-              Detail
+            <Link to={`detail/${0}`} className="Link-to-detail Link-space">
+              <span className="material-icons">search</span>
+            </Link>
+            <Link to="cart" className="Link-to-detail Link-space">
+              <span className="material-icons">shopping_cart</span>
             </Link>
           </Nav>
         </Container>
@@ -62,17 +64,20 @@ function App() {
                         setShoes(copy2);
                       });
                   }
+
                   SetNums(nums + 1);
                   console.log(nums);
                 }}
               >
-                더보기
+                상품 더보기
               </button>
             </>
           }
         ></Route>
 
-        <Route path="/detail/:pn" element={<DetailPage shoes={shoes} />} />
+        <Route path="/detail/:pn" element={<Detail shoes={shoes} />} />
+
+        <Route path="/cart" element={<Cart></Cart>} />
       </Routes>
     </div>
   );

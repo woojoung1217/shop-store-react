@@ -1,6 +1,18 @@
 .App {
   text-align: center;
 }
+* {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.start {
+  opacity: 0;
+  display: none;
+}
+.end {
+  opacity: 1;
+  transition: 2s;
+}
 
 .back {
   width: 100%;
@@ -16,29 +28,23 @@
 .Link-to-home {
   text-decoration: none;
   color: #fff;
-  padding: 10px;
   margin-right: 10px;
-
-  transition: 1s;
+  transition: 0.5s;
+  margin-left: 20px;
 }
 .Link-to-home:hover {
-  color: #fff;
-  border: 2px solid skyblue;
-  border-radius: 10px;
+  color: #0d6efd;
 }
 
 .Link-to-detail {
   text-decoration: none;
   color: #fff;
-  padding: 10px;
   margin-right: 10px;
-
   transition: 1s;
+  margin-left: 20px;
 }
 .Link-to-detail:hover {
-  color: #fff;
-  border: 2px solid skyblue;
-  border-radius: 10px;
+  color: #0d6efd;
 }
 .alert-box {
   width: 80%;
@@ -59,4 +65,32 @@
   font-size: 16px;
   color: aliceblue;
   border-radius: 14px;
+}
+
+.space {
+  margin-top: 100px;
+}
+
+.Navi-h {
+  width: 100%;
+  height: 100px;
+  background-color: #ddd;
+}
+.start {
+}
+
+.bg {
+  width: 100%;
+  height: 300px;
+  background-color: rgb(14, 1, 1);
+  opacity: 0;
+  transition: 1s;
+  transform: rotateX(360);
+}
+
+.tc {
+  width: 100%;
+  height: 300px;
+  opacity: 1;
+  background-color: rgb(110, 61, 61);
 }
