@@ -10,9 +10,11 @@ import Cart from "./Cart";
 
 function App() {
   let [shoes, setShoes] = useState(Data);
-  let [nums, SetNums] = useState(1);
-  let [재고] = useState([10, 11, 12]);
   let navigate = useNavigate();
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify([]));
+  }, []);
+  let [count, setcount] = useState(0);
 
   return (
     <div className="App">
@@ -26,10 +28,11 @@ function App() {
             <Link to={`detail/${0}`} className="Link-to-detail Link-space">
               <span className="material-icons">search</span>
             </Link>
-            <Link to="cart" className="Link-to-detail Link-space">
+            <Link to="/cart" className="Link-to-detail Link-space">
               <span className="material-icons">shopping_cart</span>
             </Link>
           </Nav>
+          <Nav className="ms-auto">반가워요 Kim</Nav>
         </Container>
       </Navbar>
 
@@ -48,7 +51,7 @@ function App() {
               </div>
 
               <button
-                className="btn-style"
+                className={"btn-style"}
                 onClick={() => {
                   axios
                     .get("https://codingapple1.github.io/shop/data2.json")
@@ -56,26 +59,26 @@ function App() {
                       let copy = [...shoes].concat([...result.data]);
                       setShoes(copy);
                     });
-                  if (nums === 2) {
+                  setcount(count + 1);
+                  if (count === 1) {
+                    console.log(count);
                     axios
-                      .get("https://codingapple1.github.io/shop/data2.json")
-                      .then((items) => {
-                        let copy2 = [...shoes].concat([...items.data]);
-                        setShoes(copy2);
+                      .get("https://codingapple1.github.io/shop/data3.json")
+                      .then((result) => {
+                        let copy = [...shoes].concat([...result.data]);
+                        console.log(result.data);
+                        setShoes(copy);
                       });
                   }
-
-                  SetNums(nums + 1);
-                  console.log(nums);
                 }}
               >
-                상품 더보기
+                더보기 버튼
               </button>
             </>
           }
         ></Route>
 
-        <Route path="/detail/:pn" element={<Detail shoes={shoes} />} />
+        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
 
         <Route path="/cart" element={<Cart></Cart>} />
       </Routes>
@@ -86,14 +89,21 @@ function App() {
 function Card(props) {
   return (
     <div className="col-md-4">
-      <img
-        src={
-          "https://codingapple1.github.io/shop/shoes" + (props.i + 1) + ".jpg"
-        }
-        width="80%"
-      />
-      <h4>{props.shoes.title}</h4>
-      <p>{props.shoes.price}</p>
+      <Link
+        to={`/detail/${props.i}`}
+        style={{ textDecoration: "none", fontWeight: "700", color: "black" }}
+      >
+        <img
+          src={
+            "https://codingapple1.github.io/shop/shoes" + (props.i + 1) + ".jpg"
+          }
+          width="80%"
+        />
+
+        <h4>{props.shoes.title}</h4>
+        <p>{props.shoes.price}</p>
+        <p>{props.shoes.content}</p>
+      </Link>
     </div>
   );
 }

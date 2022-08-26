@@ -94,3 +94,9 @@
   opacity: 1;
   background-color: rgb(110, 61, 61);
 }
+.none {
+  display: 0;
+}
+.fade {
+  background-color: #0d6efd;
+}

@@ -6,16 +6,36 @@ import { addItem } from "./store";
 import { useDispatch } from "react-redux";
 
 function Detail(props) {
-  let { pn } = useParams();
+  let { id } = useParams();
   let findPageNum = props.shoes.find(function (ele) {
-    return ele.id == pn;
+    return ele.id == id;
   });
   let [tab, setTab] = useState(0);
-
+  useEffect(() => {});
   let dispatch = useDispatch();
+  useEffect(() => {
+    let 꺼낸거 = localStorage.getItem("watched");
+    꺼낸거 = JSON.parse(꺼낸거);
+    꺼낸거.push(findPageNum.id);
+    꺼낸거 = new Set(꺼낸거);
+    꺼낸거 = Array.from(꺼낸거);
+    localStorage.setItem("watched", JSON.stringify(꺼낸거));
+  }, []);
+
+  let [alret, setalert] = useState(true);
+  let [count, setcount] = useState(0);
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setalert(false);
+    }, 2000);
+    return () => {};
+  });
 
   return (
     <div className="container">
+      {alret == true ? (
+        <div className={"alert alert-warning"}>2초이내 구매시 할인</div>
+      ) : null}
       <div className="row">
         <div className="col-md-6">
           <img
@@ -89,7 +109,7 @@ function TabContent({ tab }) {
       setFade("end");
     }, 1000);
     return () => {
-      setFade(" ");
+      setFade("");
     };
   }, [tab]);
 
