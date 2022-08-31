@@ -4,6 +4,7 @@
 * {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
+  scroll-behavior: smooth;
 }
 .start {
   opacity: 0;
@@ -18,13 +19,58 @@
   width: 100%;
   height: 60px;
 }
+.text-d {
+  text-decoration: none;
+  color: black;
+  transition: 1s;
+}
+.text-d :hover {
+  text-decoration: none;
+  color: #0d6efd;
+}
+.carousel-control-prev-icon {
+  color: black;
+  background-color: black;
+}
+.style-prev {
+  width: 40px;
+  height: 30px;
+  text-decoration: none;
+}
+.cross {
+}
+.bg-1 {
+  height: 300px;
+  background-color: bisque;
+  background-size: cover;
+  color: black;
+}
+.bg-2 {
+  height: 300px;
+  background-image: url("./img/bg-2.png");
+  background-color: #ddd;
+  background-size: cover;
+  color: black;
+}
+.bg-3 {
+  height: 300px;
+  background-image: url("./img/bg1.png");
+  background-color: #ddd;
+  background-size: cover;
+  color: black;
+}
 .main-bg {
   height: 300px;
-  background-image: url(./img/bg.png);
+  background-image: url("");
+  background-color: #ddd;
   background-size: cover;
-  background-position: center;
+  color: black;
 }
-
+.color-black {
+  color: black;
+  font-size: 44px;
+  font-weight: 600;
+}
 .Link-to-home {
   text-decoration: none;
   color: #fff;
@@ -60,7 +106,7 @@
 .btn-style {
   width: 100px;
   height: 50px;
-  background-color: rgb(10, 15, 15);
+  background-color: #0d6efd;
   border: none;
   font-size: 16px;
   color: aliceblue;
@@ -99,4 +145,11 @@
 }
 .fade {
   background-color: #0d6efd;
+}
+
+.cnt-p {
+  text-align: center;
+}
+.font-siz {
+  font-size: 33px;
 }

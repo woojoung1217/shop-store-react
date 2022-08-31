@@ -15,12 +15,16 @@ function App() {
     localStorage.setItem("watched", JSON.stringify([]));
   }, []);
   let [count, setcount] = useState(0);
+  let [pic, setpic] = useState(0, 1, 2);
 
   return (
     <div className="App">
-      <Navbar bg="dark" variant="dark" className="back">
+      <Navbar bg="primary" variant="dark" className="back">
         <Container>
-          <Navbar.Brand href="/"> SHOE STORE </Navbar.Brand>
+          <Navbar.Brand href="/">
+            {" "}
+            <strong className="font-siz">세</strong>상의 모든 신발 👟
+          </Navbar.Brand>
           <Nav className="me-auto">
             <Link to="/" className="Link-to-home Link-space">
               <span className="material-icons">home</span>
@@ -41,7 +45,24 @@ function App() {
           path="/"
           element={
             <>
-              <div className="main-bg"></div>
+              <div className="main-bg">
+                <Carousel>
+                  <Carousel.Item className="bg-1">
+                    <Carousel.Caption className="cross">
+                      <h3 className="color-black">
+                        언넝 사야지 손해 아닌데..?
+                      </h3>
+                      <h3 className="color-black">가을 맞이 초특가 70% SALE</h3>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                  <Carousel.Item className="bg-2">
+                    <Carousel.Caption></Carousel.Caption>
+                  </Carousel.Item>
+                  <Carousel.Item className="bg-3">
+                    <Carousel.Caption></Carousel.Caption>
+                  </Carousel.Item>
+                </Carousel>
+              </div>
               <div className="container ">
                 <div className="row">
                   {shoes.map(function (a, i) {
@@ -72,13 +93,16 @@ function App() {
                   }
                 }}
               >
-                더보기 버튼
+                More
               </button>
             </>
           }
         ></Route>
 
-        <Route path="/detail/:id" element={<Detail shoes={shoes} />} />
+        <Route
+          path="/detail/:id"
+          element={<Detail shoes={shoes} pic={pic} />}
+        />
 
         <Route path="/cart" element={<Cart></Cart>} />
       </Routes>

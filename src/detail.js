@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, Route, useParams, Routes } from "react-router-dom";
 import { Nav, Alert, Card } from "react-bootstrap";
 import { addItem } from "./store";
 import { useDispatch } from "react-redux";
@@ -38,10 +38,48 @@ function Detail(props) {
       ) : null}
       <div className="row">
         <div className="col-md-6">
-          <img
-            src="https://codingapple1.github.io/shop/shoes1.jpg"
-            width="100%"
-          />
+          <div>
+            <Link to={`/detail/${id == 0 ? 1 : 2}`} className="text-d">
+              <h4 onClick={() => {}}> 다음 상품 보기⏭</h4>
+            </Link>
+          </div>
+
+          {id == 0 ? (
+            <img
+              src={"https://codingapple1.github.io/shop/shoes1.jpg"}
+              width="100%"
+            />
+          ) : null}
+          {id == 1 ? (
+            <img
+              src={"https://codingapple1.github.io/shop/shoes2.jpg"}
+              width="100%"
+            />
+          ) : null}
+          {id == 2 ? (
+            <img
+              src={"https://codingapple1.github.io/shop/shoes3.jpg"}
+              width="100%"
+            />
+          ) : null}
+          {id == 3 ? (
+            <img
+              src={"https://codingapple1.github.io/shop/shoes4.jpg"}
+              width="100%"
+            />
+          ) : null}
+          {id == 4 ? (
+            <img
+              src={"https://codingapple1.github.io/shop/shoes5.jpg"}
+              width="100%"
+            />
+          ) : null}
+          {id == 5 ? (
+            <img
+              src={"https://codingapple1.github.io/shop/shoes6.jpg"}
+              width="100%"
+            />
+          ) : null}
         </div>
 
         <div className="col-md-6">
@@ -64,6 +102,7 @@ function Detail(props) {
           </button>
         </div>
       </div>
+
       <Nav variant="tabs" defaultActiveKey="link0" className="Nav-h">
         <Nav.Item>
           <Nav.Link
@@ -100,6 +139,7 @@ function Detail(props) {
     </div>
   );
 }
+function itemsContent(props) {}
 
 function TabContent({ tab }) {
   let [fade, setFade] = useState("");
@@ -115,7 +155,11 @@ function TabContent({ tab }) {
 
   return (
     <div className={"start" + fade}>
-      {[<div>0</div>, <div>1</div>, <div>2</div>][tab]}
+      {
+        [<div>이건 검은 신발임</div>, <div>120000원임</div>, <div>남자용</div>][
+          tab
+        ]
+      }
     </div>
   );
 }
