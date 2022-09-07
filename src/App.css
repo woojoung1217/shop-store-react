@@ -6,14 +6,6 @@
   font-weight: 700;
   scroll-behavior: smooth;
 }
-.start {
-  opacity: 0;
-  display: none;
-}
-.end {
-  opacity: 1;
-  transition: 2s;
-}
 
 .back {
   width: 100%;
@@ -26,11 +18,8 @@
 }
 .text-d :hover {
   text-decoration: none;
-  color: #0d6efd;
 }
 .carousel-control-prev-icon {
-  color: black;
-  background-color: black;
 }
 .style-prev {
   width: 40px;
@@ -43,7 +32,6 @@
   height: 300px;
   background-color: bisque;
   background-size: cover;
-  color: black;
 }
 .bg-2 {
   height: 300px;
@@ -151,5 +139,30 @@
   text-align: center;
 }
 .font-siz {
+  font-size: 33px;
+}
+
+/* fade animation effect  */
+
+.nomal {
+  opacity: 0.5;
+  transition: 1s;
+}
+
+.end {
+  opacity: 1.2;
+  transition: opacity 0.3s;
+}
+
+.input-section {
+  width: 40%;
+  height: 150px;
+  background-color: #ddd;
+}
+
+.text-section {
+  width: 100%;
+  height: 500px;
+  background-color: aquamarine;
   font-size: 33px;
 }

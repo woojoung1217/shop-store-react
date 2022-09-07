@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addCount, deleltItem } from "./store";
@@ -5,6 +6,11 @@ import { addCount, deleltItem } from "./store";
 function Cart() {
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
+
+  let [text, settext] = useState("");
+  useEffect(() => {
+    setTimeout(() => {}, 1000);
+  });
 
   return (
     <div>
@@ -33,7 +39,7 @@ function Cart() {
                       dispatch(addCount(i));
                     }}
                   >
-                    +
+                    수량
                   </button>
                 </td>
                 <td>

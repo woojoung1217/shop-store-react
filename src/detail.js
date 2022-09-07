@@ -10,20 +10,8 @@ function Detail(props) {
   let findPageNum = props.shoes.find(function (ele) {
     return ele.id == id;
   });
-  let [tab, setTab] = useState(0);
-  useEffect(() => {});
-  let dispatch = useDispatch();
-  useEffect(() => {
-    let 꺼낸거 = localStorage.getItem("watched");
-    꺼낸거 = JSON.parse(꺼낸거);
-    꺼낸거.push(findPageNum.id);
-    꺼낸거 = new Set(꺼낸거);
-    꺼낸거 = Array.from(꺼낸거);
-    localStorage.setItem("watched", JSON.stringify(꺼낸거));
-  }, []);
 
   let [alret, setalert] = useState(true);
-  let [count, setcount] = useState(0);
   useEffect(() => {
     let timer = setTimeout(() => {
       setalert(false);
@@ -31,8 +19,20 @@ function Detail(props) {
     return () => {};
   });
 
+  let [fade2, setFade2] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFade2("end");
+    }, 1000);
+    return () => {
+      setFade2("");
+    };
+  }, []);
+  let [tab, setTab] = useState(0);
+
   return (
-    <div className="container">
+    <div className={"container nomal " + fade2}>
       {alret == true ? (
         <div className={"alert alert-warning"}>2초이내 구매시 할인</div>
       ) : null}
@@ -40,7 +40,7 @@ function Detail(props) {
         <div className="col-md-6">
           <div>
             <Link to={`/detail/${id == 0 ? 1 : 2}`} className="text-d">
-              <h4 onClick={() => {}}> 다음 상품 보기⏭</h4>
+              <h4 onClick={() => {}}> 다음 상품 보기 ❤️</h4>
             </Link>
           </div>
 
@@ -65,18 +65,6 @@ function Detail(props) {
           {id == 3 ? (
             <img
               src={"https://codingapple1.github.io/shop/shoes4.jpg"}
-              width="100%"
-            />
-          ) : null}
-          {id == 4 ? (
-            <img
-              src={"https://codingapple1.github.io/shop/shoes5.jpg"}
-              width="100%"
-            />
-          ) : null}
-          {id == 5 ? (
-            <img
-              src={"https://codingapple1.github.io/shop/shoes6.jpg"}
               width="100%"
             />
           ) : null}
@@ -139,29 +127,35 @@ function Detail(props) {
     </div>
   );
 }
-function itemsContent(props) {}
 
 function TabContent({ tab }) {
   let [fade, setFade] = useState("");
 
   useEffect(() => {
-    setTimeout(() => {
+    let timer = setTimeout(() => {
       setFade("end");
     }, 1000);
     return () => {
       setFade("");
+      clearTimeout(timer);
     };
   }, [tab]);
-
   return (
-    <div className={"start" + fade}>
-      {
-        [<div>이건 검은 신발임</div>, <div>120000원임</div>, <div>남자용</div>][
-          tab
-        ]
-      }
+    <div className={"nomal " + fade}>
+      {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tab]}
     </div>
   );
+
+  // if(tab==0){
+  //   return <div>내용0</div>;
+
+  // }
+  // elseif(tab==1){
+  //   return <div>내용1</div>
+  // }
+  //   elseif(tab==2){
+  //   return <div>내용1</div>
+  // }
 }
 
 export default Detail;

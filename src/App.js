@@ -18,12 +18,12 @@ function App() {
   let [pic, setpic] = useState(0, 1, 2);
 
   return (
-    <div className="App">
+    <div className={"App"}>
       <Navbar bg="primary" variant="dark" className="back">
         <Container>
           <Navbar.Brand href="/">
             {" "}
-            <strong className="font-siz">세</strong>상의 모든 신발 👟
+            <strong className="font-siz">세</strong>상의 모든 신발
           </Navbar.Brand>
           <Nav className="me-auto">
             <Link to="/" className="Link-to-home Link-space">
@@ -63,8 +63,8 @@ function App() {
                   </Carousel.Item>
                 </Carousel>
               </div>
-              <div className="container ">
-                <div className="row">
+              <div className={"container"}>
+                <div className={"row"}>
                   {shoes.map(function (a, i) {
                     return <Card shoes={shoes[i]} i={i} key={i} />;
                   })}
