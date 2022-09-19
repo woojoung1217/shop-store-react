@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Route, useParams, Routes } from "react-router-dom";
 import { Nav, Alert, Card } from "react-bootstrap";
-import { addItem } from "./store";
+// import { addItem } from "./store";
 import { useDispatch } from "react-redux";
 
 function Detail(props) {
@@ -130,7 +130,6 @@ function Detail(props) {
 
 function TabContent({ tab }) {
   let [fade, setFade] = useState("");
-
   useEffect(() => {
     let timer = setTimeout(() => {
       setFade("end");

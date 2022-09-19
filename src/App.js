@@ -1,21 +1,28 @@
 /* eslint-disable */
 import "./App.css";
 import { Container, Nav, Navbar, Carousel } from "react-bootstrap";
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Data from "./data.js";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 import Detail from "./detail";
 import axios from "axios";
 import Cart from "./Cart";
 
 function App() {
   let [shoes, setShoes] = useState(Data);
+
   let navigate = useNavigate();
   useEffect(() => {
     localStorage.setItem("watched", JSON.stringify([]));
   }, []);
   let [count, setcount] = useState(0);
   let [pic, setpic] = useState(0, 1, 2);
+  let [seller, setSeller] = useState(0);
+  let ReduxStateUserName = useSelector((state) => {
+    return state;
+  });
 
   return (
     <div className={"App"}>
@@ -36,7 +43,9 @@ function App() {
               <span className="material-icons">shopping_cart</span>
             </Link>
           </Nav>
-          <Nav className="ms-auto">반가워요 Kim</Nav>
+          <Nav className="ms-auto">
+            반가워요😃 <strong>{ReduxStateUserName.user}</strong>
+          </Nav>
         </Container>
       </Navbar>
 
@@ -103,7 +112,6 @@ function App() {
           path="/detail/:id"
           element={<Detail shoes={shoes} pic={pic} />}
         />
-
         <Route path="/cart" element={<Cart></Cart>} />
       </Routes>
     </div>
